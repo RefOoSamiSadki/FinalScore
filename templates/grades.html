@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='grades.css') }}">
+    <title>Grades</title>
+</head>
+<body>
+    <div class="container">
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th colspan="5">
+                        <h2>ازيك يا {{ name }}❤️👋</h2>
+                        <h3>النسبة المئوية الكلية: {{ percentage }}%</h3>
+                    </th>
+                </tr>
+                <tr>
+                    <th>المادة</th>
+                    <th>النسبة المئوية</th>
+                    <th>درجتك</th>
+                    <th>التقدير</th>
+                    <th>الدرجة النهائيه</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for grade in grades %}
+                <tr>
+                    <td>{{ grade.course_name }}</td>
+                    <td>{{ grade.percentage }}%</td>
+                    <td>{{ grade.total_score }}</td>
+                    <td>{{ grade.grade }}</td>
+                    <td>{{ grade.max_score }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Confetti settings
+            const confettiSettings = {
+                particleCount: 600,
+                spread: 140,
+                startVelocity: 60,
+                decay: 0.9,
+                origin: { y: 0.6 },
+                colors: ['#ff0', '#0f0', '#00f', '#f00', '#ff0', '#217093'],
+                disableForReducedMotion: true
+            };
+            
+            // Fire confetti when the page loads
+            confetti(confettiSettings);
+        });
+    </script>
+</body>
+</html>
