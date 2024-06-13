@@ -17,9 +17,19 @@ def index():
 def get_grades():
     try:
 
-        email = request.form['username']
-        password = request.form['password']
+        email = request.form['username'].strip()
+        password = request.form['password'].strip()
         selected_year = request.form['year']
+
+        # Validate username
+        if not email.isdigit() or len(email) != 14:
+            flash("الرقم القومي يجب ان يكون 14 رقما!")
+            return redirect(url_for('index'))
+        
+        if not all(ord(char) < 128 for char in email):
+            flash("يجب كتابه الرقم القومي بالارقام الانجليزيه!")
+            return redirect(url_for('index'))
+            
         headers = {
             'Accept': '*/*',
             'Accept-Language': 'en-US,en;q=0.9,ar;q=0.8',
