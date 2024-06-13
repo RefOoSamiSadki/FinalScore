@@ -10,12 +10,11 @@ body {
 
 .styled-table {
     border-collapse: collapse;
-    margin: 25px 0;
+    margin: 20px 0;
     font-size: 0.9em;
-    font-family: sans-serif;
+    font-family: 'Cairo', sans-serif;
     min-width: 400px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-    border-radius: 10px; /* Rounded border */
 }
 
 .styled-table thead tr {
@@ -23,13 +22,29 @@ body {
     color: #ffffff;
     text-align: right;
     font-family: 'Cairo', sans-serif;
-    border-top-left-radius: 10px; /* Top left corner rounded */
-    border-top-right-radius: 10px; /* Top right corner rounded */
 }
 
 .styled-table th,
 .styled-table td {
-    padding: 12px 15px;
+    padding: 8px 10px;
+}
+
+.to-be-rounded {
+    border-radius: 10px 10px 0px 0px; /* Rounded border */
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-content h2 {
+    margin: 0;
+}
+
+.header-content h3 {
+    margin: 0;
 }
 
 .styled-table tbody tr {
@@ -41,7 +56,6 @@ body {
 }
 
 .styled-table tbody tr:last-of-type {
-    border-radius: 10px; /* Rounded border */
     border-bottom: 2px solid #217093;
 }
 
@@ -50,3 +64,21 @@ body {
     color: #217093;
 }
 
+#download-btn {
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #4eb8dd;
+    border: none;
+    box-sizing: border-box;
+    box-shadow: none;
+    height: 30px;
+    color: #FFF;
+    font-weight: 400;
+    font-family: 'cairo', sans-serif;
+    transition: background-color .2s ease-out;
+}
+
+#download-btn:hover {
+    background-color: #1b5a75;
+}
