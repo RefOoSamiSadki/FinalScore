@@ -9,11 +9,14 @@
 </head>
 <body>
     <div class="container">
-        <table class="styled-table">
+        <table class="styled-table" id="grades-table">
             <thead>
                 <tr>
-                    <th colspan="5">
-                        <h2>ازيك يا {{ name }}❤️👋</h2>
+                    <th colspan="5" class="to-be-rounded">
+                        <div class="header-content">
+                            <h2>ازيك يا {{ name }}❤️👋</h2>
+                            <button id="download-btn">تنزيل النتيجة😉✨</button>
+                            </div>
                         <h3>النسبة المئوية الكلية: {{ percentage }}%</h3>
                     </th>
                 </tr>
@@ -39,21 +42,32 @@
         </table>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             // Confetti settings
             const confettiSettings = {
-                particleCount: 600,
-                spread: 140,
-                startVelocity: 60,
-                decay: 0.9,
-                origin: { y: 0.6 },
+                particleCount: 1200,
+                spread: 150,
+                startVelocity: 80,
+                decay: 0.8,
+                origin: { y: 0.5 },
                 colors: ['#ff0', '#0f0', '#00f', '#f00', '#ff0', '#217093'],
                 disableForReducedMotion: true
             };
             
             // Fire confetti when the page loads
             confetti(confettiSettings);
+
+            // Download table as image
+            document.getElementById('download-btn').addEventListener('click', function() {
+                html2canvas(document.getElementById('grades-table')).then(function(canvas) {
+                    let link = document.createElement('a');
+                    link.download = 'grades-table.png';
+                    link.href = canvas.toDataURL();
+                    link.click();
+                });
+            });
         });
     </script>
 </body>
